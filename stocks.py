@@ -49,10 +49,10 @@ training_dataset['start_d'] = dat
 dat = []
 mon = []
 yea = []
-for _ in training_dataset['creation_date']:
-    d = _ % 100
-    m = ((_ - d)//100)%100
-    y = _//10000 
+for i in training_dataset['creation_date']:
+    d = i % 100
+    m = ((i - d)//100)%100
+    y = i//10000 
     dat.append(d)
     mon.append(m)
     yea.append(y)
@@ -63,10 +63,10 @@ training_dataset['creation_d'] = dat
 dat = []
 mon = []
 yea = []
-for _ in training_dataset['sell_date']:
-    d = _ % 100
-    m = ((_ - d)//100)%100
-    y = _//10000 
+for j in training_dataset['sell_date']:
+    d = j % 100
+    m = ((j - d)//100)%100
+    y = j//10000 
     dat.append(d)
     mon.append(m)
     yea.append(y)
@@ -90,12 +90,12 @@ print('Training Accuracy is: ', accuracy_train)
 
 test_dataset = pd.read_csv('test.csv')
 x = []
-for _ in test_dataset['portfolio_id']:
-   x.append(float(( _[2:])))
+for i in test_dataset['portfolio_id']:
+   x.append(float(( i[2:])))
 test_dataset['corrected_id'] = x
 y = []
-for _ in test_dataset['office_id']:
-   y.append(float( _[3:]))
+for j in test_dataset['office_id']:
+   y.append(float( j[3:]))
 test_dataset['corrected_office'] = y
 test_dataset['currency'].replace({'USD':1,'GBP':pound_rate,'CHF':swiss_rate,'EUR':euro,'JPY':yuan},inplace = True)
 test_dataset['pf_category'].replace({'A':0,'B':1,'C':2,'D':3,'E':4},inplace = True)
